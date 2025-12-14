@@ -93,7 +93,7 @@ const UserBadge = () => {
   return (
     <div className="p-3">
       <DropdownMenu.Trigger
-        disabled={!member}
+        disabled={!seller}
         className={clx(
           "bg-ui-bg-subtle grid w-full cursor-pointer grid-cols-[24px_1fr_15px] items-center gap-2 rounded-md py-1 pl-0.5 pr-2 outline-none",
           "hover:bg-ui-bg-subtle-hover",
