@@ -1,5 +1,6 @@
 import { SingleColumnPage } from "../../../components/layout/pages"
 import { useDashboardExtension } from "../../../extensions"
+import { ProductListCreateBuzz } from "./components/product-list-create-buzz"
 import { ProductListTable } from "./components/product-list-table"
 
 export const ProductList = () => {
@@ -13,6 +14,7 @@ export const ProductList = () => {
       }}
     >
       <ProductListTable />
+      <ProductListCreateBuzz />
     </SingleColumnPage>
   )
 }

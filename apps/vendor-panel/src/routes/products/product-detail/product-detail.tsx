@@ -11,6 +11,8 @@ import { ProductVariantSection } from "./components/product-variant-section"
 
 import { useDashboardExtension } from "../../../extensions"
 import { ProductAdditionalAttributesSection } from "./components/product-additional-attribute-section/ProductAdditionalAttributesSection"
+import { ProductBuzzSection } from "./components/product-buzz-section"
+import { ProductVideoSection } from "./components/product-video-section"
 
 export const ProductDetail = () => {
   const { id } = useParams()
@@ -47,8 +49,10 @@ export const ProductDetail = () => {
       <TwoColumnPage.Main>
         <ProductGeneralSection product={product} />
         <ProductMediaSection product={product} />
+        <ProductVideoSection product={product} />
         <ProductOptionSection product={product} />
         <ProductVariantSection product={product} />
+        <ProductBuzzSection product={product} />
       </TwoColumnPage.Main>
       <TwoColumnPage.Sidebar>
         {/* <ProductShippingProfileSection product={product} /> */}
