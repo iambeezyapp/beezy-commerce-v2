@@ -22,7 +22,7 @@ import { Skeleton } from "../../common/skeleton"
 
 import { useState } from "react"
 import { Link, useLocation, useNavigate } from "react-router-dom"
-import { useLogout, useUserMe } from "../../../hooks/api"
+import { useLogout, useMe } from "../../../hooks/api"
 import { queryClient } from "../../../lib/query-client"
 import { useGlobalShortcuts } from "../../../providers/keybind-provider/hooks"
 import { useTheme } from "../../../providers/theme-provider"
@@ -69,12 +69,13 @@ export const UserMenu = () => {
 }
 
 const UserBadge = () => {
-  const { member, isPending, isError, error } = useUserMe()
+  // Use seller (entity owner) info instead of logged-in member
+  const { seller, isPending, isError, error } = useMe()
 
-  const displayName = member?.name || member?.email || ""
+  const displayName = seller?.name || ""
 
   const fallback = displayName ? displayName[0].toUpperCase() : null
-  const avatar = member?.photo || ""
+  const avatar = seller?.photo || ""
 
   if (isPending) {
     return (
@@ -278,17 +279,18 @@ const GlobalKeybindsModal = (props: {
 }
 
 const UserItem = () => {
-  const { member, isPending, isError, error } = useUserMe()
+  // Use seller (entity owner) info instead of logged-in member
+  const { seller, isPending, isError, error } = useMe()
 
-  const loaded = !isPending && !!member
+  const loaded = !isPending && !!seller
 
   if (!loaded) {
     return <div></div>
   }
 
-  const name = member?.name || ""
-  const email = member?.email || ""
-  const avatar = member?.photo || ""
+  const name = seller?.name || ""
+  const email = seller?.email || ""
+  const avatar = seller?.photo || ""
 
   if (isError) {
     throw error
